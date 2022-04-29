@@ -1,0 +1,562 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6001E63327DF597D005E7467 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6001E63227DF597D005E7467 /* MainView.swift */; };
+		6001E63527DF9225005E7467 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6001E63427DF9225005E7467 /* CategoriesView.swift */; };
+		6032DDFB27E82B5C00002E5E /* CategoryCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6032DDFA27E82B5C00002E5E /* CategoryCardView.swift */; };
+		603DD39827EBA3B3003730D9 /* ShapeCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603DD39727EBA3B3003730D9 /* ShapeCategory.swift */; };
+		603DD39A27F1A489003730D9 /* AddRecipeViewori.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603DD39927F1A489003730D9 /* AddRecipeViewori.swift */; };
+		603DD39C27F1F5B6003730D9 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603DD39B27F1F5B6003730D9 /* ImagePicker.swift */; };
+		603DD39E27F337B7003730D9 /* FormViewComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603DD39D27F337B7003730D9 /* FormViewComponents.swift */; };
+		603DD3A027F348B2003730D9 /* AddRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603DD39F27F348B2003730D9 /* AddRecipeView.swift */; };
+		603DD3A227F55CA5003730D9 /* AddRecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603DD3A127F55CA5003730D9 /* AddRecipeViewModel.swift */; };
+		603DD3A427F5656C003730D9 /* PastePopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603DD3A327F5656C003730D9 /* PastePopUp.swift */; };
+		603DD3A627F56AC6003730D9 /* PasteViewIngredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603DD3A527F56AC6003730D9 /* PasteViewIngredient.swift */; };
+		603DD3A827F57C43003730D9 /* [BACKUP]AddIngredientRowViewWithDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 603DD3A727F57C43003730D9 /* [BACKUP]AddIngredientRowViewWithDelete.swift */; };
+		6040450227B27169007876DF /* recookAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6040450127B27169007876DF /* recookAppApp.swift */; };
+		6040450427B27169007876DF /* ContentView(Contoh).swift in Sources */ = {isa = PBXBuildFile; fileRef = 6040450327B27169007876DF /* ContentView(Contoh).swift */; };
+		6040450627B2716A007876DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6040450527B2716A007876DF /* Assets.xcassets */; };
+		6040450927B2716A007876DF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6040450827B2716A007876DF /* Preview Assets.xcassets */; };
+		6040450B27B2716A007876DF /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6040450A27B2716A007876DF /* PersistenceController.swift */; };
+		6040450E27B2716A007876DF /* recookApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6040450C27B2716A007876DF /* recookApp.xcdatamodeld */; };
+		6040451627B27293007876DF /* WaterfallGrid in Frameworks */ = {isa = PBXBuildFile; productRef = 6040451527B27293007876DF /* WaterfallGrid */; };
+		6040451C27B4EF35007876DF /* RecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6040451B27B4EF34007876DF /* RecipesView.swift */; };
+		6040451E27B4EF4D007876DF /* CardRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6040451D27B4EF4D007876DF /* CardRecipeView.swift */; };
+		6040452027B6D59C007876DF /* dummyData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6040451F27B6D59C007876DF /* dummyData.swift */; };
+		605DA1A427F5F35800151F7A /* Step+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605DA19E27F5F35800151F7A /* Step+CoreDataClass.swift */; };
+		605DA1A527F5F35800151F7A /* Step+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605DA19F27F5F35800151F7A /* Step+CoreDataProperties.swift */; };
+		605DA1A627F5F35800151F7A /* Ingredient+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605DA1A027F5F35800151F7A /* Ingredient+CoreDataClass.swift */; };
+		605DA1A727F5F35800151F7A /* Ingredient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605DA1A127F5F35800151F7A /* Ingredient+CoreDataProperties.swift */; };
+		605DA1A827F5F35800151F7A /* Recipe+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605DA1A227F5F35800151F7A /* Recipe+CoreDataClass.swift */; };
+		605DA1A927F5F35800151F7A /* Recipe+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605DA1A327F5F35800151F7A /* Recipe+CoreDataProperties.swift */; };
+		605DA1AB27F619DB00151F7A /* dataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605DA1AA27F619DB00151F7A /* dataHelper.swift */; };
+		605DA1AD27F67E9F00151F7A /* AddStepRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605DA1AC27F67E9F00151F7A /* AddStepRowView.swift */; };
+		605DA1AF27F68C8F00151F7A /* DetailRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605DA1AE27F68C8F00151F7A /* DetailRecipeView.swift */; };
+		605DA1B127F68F4B00151F7A /* DetailRecipeViewComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605DA1B027F68F4B00151F7A /* DetailRecipeViewComponents.swift */; };
+		605DA1B32806CD9100151F7A /* testfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605DA1B22806CD9100151F7A /* testfile.swift */; };
+		605DA1B52806EBA000151F7A /* hourMinuteTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605DA1B42806EBA000151F7A /* hourMinuteTextFieldView.swift */; };
+		605DA1B72807DDEF00151F7A /* AddIngredientRowViewOri.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605DA1B62807DDEF00151F7A /* AddIngredientRowViewOri.swift */; };
+		605DA1B92807EC1200151F7A /* [BACKUP]AddRecipeVieworiWithDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605DA1B82807EC1200151F7A /* [BACKUP]AddRecipeVieworiWithDelete.swift */; };
+		605DA1BB2809D37E00151F7A /* RecipesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605DA1BA2809D37E00151F7A /* RecipesViewModel.swift */; };
+		60B8076C2816415A00DD3A4E /* ListCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B8076B2816415A00DD3A4E /* ListCategoryView.swift */; };
+		60B80770281BF19900DD3A4E /* PasteIngredientViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B8076F281BF19900DD3A4E /* PasteIngredientViewModel.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6001E63227DF597D005E7467 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		6001E63427DF9225005E7467 /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
+		6032DDFA27E82B5C00002E5E /* CategoryCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCardView.swift; sourceTree = "<group>"; };
+		603DD39727EBA3B3003730D9 /* ShapeCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeCategory.swift; sourceTree = "<group>"; };
+		603DD39927F1A489003730D9 /* AddRecipeViewori.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeViewori.swift; sourceTree = "<group>"; };
+		603DD39B27F1F5B6003730D9 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		603DD39D27F337B7003730D9 /* FormViewComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormViewComponents.swift; sourceTree = "<group>"; };
+		603DD39F27F348B2003730D9 /* AddRecipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddRecipeView.swift; sourceTree = "<group>"; };
+		603DD3A127F55CA5003730D9 /* AddRecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeViewModel.swift; sourceTree = "<group>"; };
+		603DD3A327F5656C003730D9 /* PastePopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastePopUp.swift; sourceTree = "<group>"; };
+		603DD3A527F56AC6003730D9 /* PasteViewIngredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteViewIngredient.swift; sourceTree = "<group>"; };
+		603DD3A727F57C43003730D9 /* [BACKUP]AddIngredientRowViewWithDelete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "[BACKUP]AddIngredientRowViewWithDelete.swift"; sourceTree = "<group>"; };
+		604044FE27B27169007876DF /* recookApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = recookApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6040450127B27169007876DF /* recookAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recookAppApp.swift; sourceTree = "<group>"; };
+		6040450327B27169007876DF /* ContentView(Contoh).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView(Contoh).swift"; sourceTree = "<group>"; };
+		6040450527B2716A007876DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6040450827B2716A007876DF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		6040450A27B2716A007876DF /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		6040450D27B2716A007876DF /* recookApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = recookApp.xcdatamodel; sourceTree = "<group>"; };
+		6040451B27B4EF34007876DF /* RecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesView.swift; sourceTree = "<group>"; };
+		6040451D27B4EF4D007876DF /* CardRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardRecipeView.swift; sourceTree = "<group>"; };
+		6040451F27B6D59C007876DF /* dummyData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dummyData.swift; sourceTree = "<group>"; };
+		605DA19E27F5F35800151F7A /* Step+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Step+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		605DA19F27F5F35800151F7A /* Step+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Step+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		605DA1A027F5F35800151F7A /* Ingredient+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		605DA1A127F5F35800151F7A /* Ingredient+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		605DA1A227F5F35800151F7A /* Recipe+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		605DA1A327F5F35800151F7A /* Recipe+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		605DA1AA27F619DB00151F7A /* dataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataHelper.swift; sourceTree = "<group>"; };
+		605DA1AC27F67E9F00151F7A /* AddStepRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStepRowView.swift; sourceTree = "<group>"; };
+		605DA1AE27F68C8F00151F7A /* DetailRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecipeView.swift; sourceTree = "<group>"; };
+		605DA1B027F68F4B00151F7A /* DetailRecipeViewComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecipeViewComponents.swift; sourceTree = "<group>"; };
+		605DA1B22806CD9100151F7A /* testfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testfile.swift; sourceTree = "<group>"; };
+		605DA1B42806EBA000151F7A /* hourMinuteTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hourMinuteTextFieldView.swift; sourceTree = "<group>"; };
+		605DA1B62807DDEF00151F7A /* AddIngredientRowViewOri.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIngredientRowViewOri.swift; sourceTree = "<group>"; };
+		605DA1B82807EC1200151F7A /* [BACKUP]AddRecipeVieworiWithDelete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "[BACKUP]AddRecipeVieworiWithDelete.swift"; sourceTree = "<group>"; };
+		605DA1BA2809D37E00151F7A /* RecipesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesViewModel.swift; sourceTree = "<group>"; };
+		60B8076B2816415A00DD3A4E /* ListCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCategoryView.swift; sourceTree = "<group>"; };
+		60B8076F281BF19900DD3A4E /* PasteIngredientViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasteIngredientViewModel.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		604044FB27B27169007876DF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6040451627B27293007876DF /* WaterfallGrid in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6001E62F27DF5913005E7467 /* ComponentsView */ = {
+			isa = PBXGroup;
+			children = (
+				6040451D27B4EF4D007876DF /* CardRecipeView.swift */,
+				6032DDFA27E82B5C00002E5E /* CategoryCardView.swift */,
+				603DD39727EBA3B3003730D9 /* ShapeCategory.swift */,
+				603DD39B27F1F5B6003730D9 /* ImagePicker.swift */,
+				603DD39D27F337B7003730D9 /* FormViewComponents.swift */,
+				603DD3A327F5656C003730D9 /* PastePopUp.swift */,
+				603DD3A527F56AC6003730D9 /* PasteViewIngredient.swift */,
+				603DD3A727F57C43003730D9 /* [BACKUP]AddIngredientRowViewWithDelete.swift */,
+				605DA1B62807DDEF00151F7A /* AddIngredientRowViewOri.swift */,
+				605DA1AC27F67E9F00151F7A /* AddStepRowView.swift */,
+				605DA1B027F68F4B00151F7A /* DetailRecipeViewComponents.swift */,
+				605DA1B42806EBA000151F7A /* hourMinuteTextFieldView.swift */,
+			);
+			name = ComponentsView;
+			sourceTree = "<group>";
+		};
+		6001E63127DF593E005E7467 /* PagesView */ = {
+			isa = PBXGroup;
+			children = (
+				6040450327B27169007876DF /* ContentView(Contoh).swift */,
+				605DA1AE27F68C8F00151F7A /* DetailRecipeView.swift */,
+				6001E63427DF9225005E7467 /* CategoriesView.swift */,
+				6040451B27B4EF34007876DF /* RecipesView.swift */,
+				6001E63227DF597D005E7467 /* MainView.swift */,
+				603DD39927F1A489003730D9 /* AddRecipeViewori.swift */,
+				605DA1B82807EC1200151F7A /* [BACKUP]AddRecipeVieworiWithDelete.swift */,
+				605DA1B22806CD9100151F7A /* testfile.swift */,
+				603DD39F27F348B2003730D9 /* AddRecipeView.swift */,
+				60B8076B2816415A00DD3A4E /* ListCategoryView.swift */,
+			);
+			path = PagesView;
+			sourceTree = "<group>";
+		};
+		604044F527B27169007876DF = {
+			isa = PBXGroup;
+			children = (
+				6040450027B27169007876DF /* recookApp */,
+				604044FF27B27169007876DF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		604044FF27B27169007876DF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				604044FE27B27169007876DF /* recookApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6040450027B27169007876DF /* recookApp */ = {
+			isa = PBXGroup;
+			children = (
+				6040450127B27169007876DF /* recookAppApp.swift */,
+				6040450527B2716A007876DF /* Assets.xcassets */,
+				6040451727B28593007876DF /* Model */,
+				6040451827B285A0007876DF /* View */,
+				6040451A27B285CA007876DF /* ViewModel */,
+				6040450727B2716A007876DF /* Preview Content */,
+			);
+			path = recookApp;
+			sourceTree = "<group>";
+		};
+		6040450727B2716A007876DF /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				6040450827B2716A007876DF /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		6040451727B28593007876DF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				605DA19E27F5F35800151F7A /* Step+CoreDataClass.swift */,
+				605DA19F27F5F35800151F7A /* Step+CoreDataProperties.swift */,
+				605DA1A027F5F35800151F7A /* Ingredient+CoreDataClass.swift */,
+				605DA1A127F5F35800151F7A /* Ingredient+CoreDataProperties.swift */,
+				605DA1A227F5F35800151F7A /* Recipe+CoreDataClass.swift */,
+				605DA1A327F5F35800151F7A /* Recipe+CoreDataProperties.swift */,
+				6040450C27B2716A007876DF /* recookApp.xcdatamodeld */,
+				6040450A27B2716A007876DF /* PersistenceController.swift */,
+				6040451F27B6D59C007876DF /* dummyData.swift */,
+				605DA1AA27F619DB00151F7A /* dataHelper.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6040451827B285A0007876DF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6001E63127DF593E005E7467 /* PagesView */,
+				6001E62F27DF5913005E7467 /* ComponentsView */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6040451A27B285CA007876DF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				603DD3A127F55CA5003730D9 /* AddRecipeViewModel.swift */,
+				605DA1BA2809D37E00151F7A /* RecipesViewModel.swift */,
+				60B8076F281BF19900DD3A4E /* PasteIngredientViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		604044FD27B27169007876DF /* recookApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6040451127B2716A007876DF /* Build configuration list for PBXNativeTarget "recookApp" */;
+			buildPhases = (
+				604044FA27B27169007876DF /* Sources */,
+				604044FB27B27169007876DF /* Frameworks */,
+				604044FC27B27169007876DF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = recookApp;
+			packageProductDependencies = (
+				6040451527B27293007876DF /* WaterfallGrid */,
+			);
+			productName = recookApp;
+			productReference = 604044FE27B27169007876DF /* recookApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		604044F627B27169007876DF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					604044FD27B27169007876DF = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 604044F927B27169007876DF /* Build configuration list for PBXProject "recookApp" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 604044F527B27169007876DF;
+			packageReferences = (
+				6040451427B27293007876DF /* XCRemoteSwiftPackageReference "WaterfallGrid" */,
+			);
+			productRefGroup = 604044FF27B27169007876DF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				604044FD27B27169007876DF /* recookApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		604044FC27B27169007876DF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6040450927B2716A007876DF /* Preview Assets.xcassets in Resources */,
+				6040450627B2716A007876DF /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		604044FA27B27169007876DF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				605DA1A727F5F35800151F7A /* Ingredient+CoreDataProperties.swift in Sources */,
+				605DA1B32806CD9100151F7A /* testfile.swift in Sources */,
+				603DD39E27F337B7003730D9 /* FormViewComponents.swift in Sources */,
+				60B80770281BF19900DD3A4E /* PasteIngredientViewModel.swift in Sources */,
+				603DD39827EBA3B3003730D9 /* ShapeCategory.swift in Sources */,
+				6040450B27B2716A007876DF /* PersistenceController.swift in Sources */,
+				605DA1B127F68F4B00151F7A /* DetailRecipeViewComponents.swift in Sources */,
+				6001E63327DF597D005E7467 /* MainView.swift in Sources */,
+				605DA1B72807DDEF00151F7A /* AddIngredientRowViewOri.swift in Sources */,
+				6040450427B27169007876DF /* ContentView(Contoh).swift in Sources */,
+				605DA1A527F5F35800151F7A /* Step+CoreDataProperties.swift in Sources */,
+				605DA1AF27F68C8F00151F7A /* DetailRecipeView.swift in Sources */,
+				60B8076C2816415A00DD3A4E /* ListCategoryView.swift in Sources */,
+				6040452027B6D59C007876DF /* dummyData.swift in Sources */,
+				603DD3A827F57C43003730D9 /* [BACKUP]AddIngredientRowViewWithDelete.swift in Sources */,
+				605DA1A627F5F35800151F7A /* Ingredient+CoreDataClass.swift in Sources */,
+				603DD3A427F5656C003730D9 /* PastePopUp.swift in Sources */,
+				6032DDFB27E82B5C00002E5E /* CategoryCardView.swift in Sources */,
+				6040451C27B4EF35007876DF /* RecipesView.swift in Sources */,
+				603DD3A227F55CA5003730D9 /* AddRecipeViewModel.swift in Sources */,
+				605DA1A427F5F35800151F7A /* Step+CoreDataClass.swift in Sources */,
+				603DD39A27F1A489003730D9 /* AddRecipeViewori.swift in Sources */,
+				6001E63527DF9225005E7467 /* CategoriesView.swift in Sources */,
+				605DA1A827F5F35800151F7A /* Recipe+CoreDataClass.swift in Sources */,
+				6040450E27B2716A007876DF /* recookApp.xcdatamodeld in Sources */,
+				603DD3A027F348B2003730D9 /* AddRecipeView.swift in Sources */,
+				605DA1AD27F67E9F00151F7A /* AddStepRowView.swift in Sources */,
+				605DA1AB27F619DB00151F7A /* dataHelper.swift in Sources */,
+				605DA1BB2809D37E00151F7A /* RecipesViewModel.swift in Sources */,
+				605DA1A927F5F35800151F7A /* Recipe+CoreDataProperties.swift in Sources */,
+				603DD39C27F1F5B6003730D9 /* ImagePicker.swift in Sources */,
+				603DD3A627F56AC6003730D9 /* PasteViewIngredient.swift in Sources */,
+				605DA1B52806EBA000151F7A /* hourMinuteTextFieldView.swift in Sources */,
+				605DA1B92807EC1200151F7A /* [BACKUP]AddRecipeVieworiWithDelete.swift in Sources */,
+				6040451E27B4EF4D007876DF /* CardRecipeView.swift in Sources */,
+				6040450227B27169007876DF /* recookAppApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		6040450F27B2716A007876DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6040451027B2716A007876DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6040451227B2716A007876DF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"recookApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 3WJLTTL8KX;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jw.recookApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6040451327B2716A007876DF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"recookApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 3WJLTTL8KX;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jw.recookApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		604044F927B27169007876DF /* Build configuration list for PBXProject "recookApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6040450F27B2716A007876DF /* Debug */,
+				6040451027B2716A007876DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6040451127B2716A007876DF /* Build configuration list for PBXNativeTarget "recookApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6040451227B2716A007876DF /* Debug */,
+				6040451327B2716A007876DF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6040451427B27293007876DF /* XCRemoteSwiftPackageReference "WaterfallGrid" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/paololeonardi/WaterfallGrid.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6040451527B27293007876DF /* WaterfallGrid */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6040451427B27293007876DF /* XCRemoteSwiftPackageReference "WaterfallGrid" */;
+			productName = WaterfallGrid;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		6040450C27B2716A007876DF /* recookApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6040450D27B2716A007876DF /* recookApp.xcdatamodel */,
+			);
+			currentVersion = 6040450D27B2716A007876DF /* recookApp.xcdatamodel */;
+			path = recookApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 604044F627B27169007876DF /* Project object */;
+}
