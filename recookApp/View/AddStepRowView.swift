@@ -10,7 +10,8 @@ import SwiftUI
 struct AddStepRowView: View {
     @Binding var step: String
     @State var order: Int
-    @State private var showTimer = false
+    @Binding var showTimer: Bool
+    //was state
     @Binding var hour: String
     @Binding var minute: String
     
@@ -59,12 +60,12 @@ struct AddStepRowView: View {
 
 //}
 
-struct AddStepRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        let test = "goreng hingga kuning kecokelatan"
-        AddStepRowView(step: .constant(test), order: 1, hour: .constant(String(5)), minute: .constant(String(20)))
-    }
-}
+//struct AddStepRowView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        let test = "goreng hingga kuning kecokelatan"
+//        AddStepRowView(step: .constant(test), order: 1, showTimer: false, hour: .constant(String(5)), minute: .constant(String(20)))
+//    }
+//}
 //struct StatefulPreviewWrapper<Value, Content: View>: View {
 //    @State var value: Value
 //    var content: (Binding<Value>) -> Content

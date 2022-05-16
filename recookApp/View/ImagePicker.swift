@@ -53,7 +53,7 @@ struct ImagePicker: UIViewControllerRepresentable {
             let image = info[.originalImage] as? UIImage
             
             //Ths will send the photo to our app with good quality if you want it, only change the amoung on [ (compressionQuality: CGFloat) ]
-            let data = image?.jpegData(compressionQuality: 1.0)
+            let data = image?.jpegData(compressionQuality: 0.6)
             
             self.img0.images = data!
             //When you click on the photo, the imagePickerView will dismiss asap

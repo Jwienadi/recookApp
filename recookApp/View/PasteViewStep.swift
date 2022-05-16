@@ -8,10 +8,10 @@
 import SwiftUI
 
 
-struct PasteViewIngredient: View {
+struct PasteViewStep: View {
     @State private var pasteText = ""
     @Binding var isPresented: Bool
-    @Binding var ingredients: [HIngredient]
+    @Binding var steps: [HStep]
 //    @State private var isRecipe: Bool
 //    private let placeholderString: String
     
@@ -28,13 +28,13 @@ struct PasteViewIngredient: View {
             VStack(spacing: 0){
                 //give example
                 //masi case sensitive
-            CustomTextEditor.init(placeholder: "Paste ingredients here!\n one ingredient/line \nExample: \n1 kg cake flour \n150 ml milk \n 1 pcs apple ", text: $pasteText)
+            CustomTextEditor.init(placeholder: "Paste step here!\n one step/line \nExample: \ncut apples into slices\nmix flour and milk\nbake", text: $pasteText)
                     .frame(maxWidth: .infinity, maxHeight: 200)
 
             Button("Add"){
-                let a = stringToIngredientsArr(IngString: pasteText)
+                let a = stringToStepsArr(StepString: pasteText)
                 if a != nil {
-                ingredients.append(contentsOf: a!)
+                steps.append(contentsOf: a!)
                 }
                 self.isPresented = false
             }
@@ -72,31 +72,31 @@ struct PasteViewIngredient: View {
 //    }
 //}
             
-struct CustomTextEditor: View {
-   let placeholder: String
-   @Binding var text: String
-   let internalPadding: CGFloat = 5
-   var body: some View {
-      ZStack(alignment: .topLeading) {
-         TextEditor(text: $text)
-//          .padding(internalPadding)
-          .disableAutocorrection(true)
-          .textInputAutocapitalization(.never)
-          
-          if text.isEmpty {   ///show placeholder if not text typed
-            Text(placeholder)
-              .foregroundColor(Color.primary.opacity(0.25))
-              .padding(EdgeInsets(top: 7, leading: 4, bottom: 0, trailing: 0))
-              .padding(internalPadding)
-          }
-       }.onAppear() {
-           UITextView.appearance().backgroundColor = .white
-         }.onDisappear() {
-           UITextView.appearance().backgroundColor = nil
-         }
-       
-    }
-}
+//struct CustomTextEditor: View {
+//   let placeholder: String
+//   @Binding var text: String
+//   let internalPadding: CGFloat = 5
+//   var body: some View {
+//      ZStack(alignment: .topLeading) {
+//         TextEditor(text: $text)
+////          .padding(internalPadding)
+//          .disableAutocorrection(true)
+//          .textInputAutocapitalization(.never)
+//
+//          if text.isEmpty {   ///show placeholder if not text typed
+//            Text(placeholder)
+//              .foregroundColor(Color.primary.opacity(0.25))
+//              .padding(EdgeInsets(top: 7, leading: 4, bottom: 0, trailing: 0))
+//              .padding(internalPadding)
+//          }
+//       }.onAppear() {
+//           UITextView.appearance().backgroundColor = .white
+//         }.onDisappear() {
+//           UITextView.appearance().backgroundColor = nil
+//         }
+//
+//    }
+//}
 
 //struct PasteViewIngredient_Previews: PreviewProvider {
 //    static var previews: some View {

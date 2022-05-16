@@ -70,6 +70,7 @@ struct AddIngredientRowView: View {
                 .frame(height: 40)
                 .background(.white)
                 .cornerRadius(8)
+                .disableAutocorrection(true)
         Spacer()
         }
         .background(Color("BgColor"))

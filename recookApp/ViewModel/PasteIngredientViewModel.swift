@@ -14,13 +14,18 @@ extension Array {
 }
 
 extension PasteViewIngredient{
-    func stringToIngredientsArr(IngString: String) -> [HIngredient]{
+    func stringToIngredientsArr(IngString: String) -> [HIngredient]?{
         let IngArrFull = IngString.components(separatedBy: "\n")
-        var IngArrSplit: [HIngredient]?
+        var IngArrSplit: [HIngredient] = []
+        var res: HIngredient? =  nil
+        if IngArrFull[0] != IngString {
         IngArrFull.forEach {ing in
-            IngArrSplit?.append(ingredientSpliiter(Ing: ing))
+            res = ingredientSpliiter(Ing: ing)
+            //res kosong whyy
+            IngArrSplit.append(res!)
         }
-        return IngArrSplit ?? [HIngredient(qty: "", unit: "", name: "", offset: 0, isSwiped: false)]
+        }
+        return IngArrSplit
         
     }
     
@@ -30,6 +35,9 @@ extension PasteViewIngredient{
         //            var name = ""
         //       let units = ["pcs", "mg", "kg", "gram", "mL", "L", "tbsp", "tsp", "ounce", "cup", "quart", "pint", "gallon", "pound", "fl. oz."]
         let units = ["kg","kilogram","kilograms", "kilogramme","cup","cups", "gram", "gr", "grams", "g", "gramme", "tbsp","tablespoon", "tablespoons", "tbsp.", "tbs", "tbs.", "tsp","teaspoon", "teaspoons", "tsp.", "t", "L","liter", "litre", "l", "mL", "milliliter", "milliliters", "cc", "millilitre", "millilitres", "lb", "pound", "lbs", "ounce", "ounces", "oz", "mg", "milligrams", "milligram", "milligrame","miligram", "fl. oz.", "fluid ounce", "fl oz"]
+        
+            //pcs belom
+        // masih case sensitive
         
         var amountUnit = ""
         var cleanIng = Ing.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -55,6 +63,8 @@ extension PasteViewIngredient{
         print("amount", amount)
         print("unit", unit)
         
+        
+        
         return HIngredient(qty: String(amount), unit: unit, name: cleanIng, offset: 0, isSwiped: false)
         
     }
@@ -73,21 +83,25 @@ extension PasteViewIngredient{
         let unitsArray = [["kg","kilogram","kilograms", "kilogramme"],
                           ["cup","cups"],
                           ["gram", "gr", "grams", "g", "gramme"],
-                          ["tbsp","tablespoon", "tablespoons", "tbsp.", "tbs", "tbs."],
-                          ["tsp","teaspoon", "teaspoons", "tsp.", "t"],
+                          ["tbsp","tablespoon", "tablespoons", "tbsp.", "tbs", "tbs.","sdm","sdt.","sendok makan"],
+                          ["tsp","teaspoon", "teaspoons", "tsp.", "t", "sdt", "sdt.", "sendok teh"],
                           ["L","liter", "litre", "l"],
                           ["mL", "milliliter", "milliliters", "cc", "millilitre", "millilitres"],
                           ["lb", "pound", "lbs"],
                           ["ounce", "ounces", "oz"],
                           ["mg", "milligrams", "milligram", "milligrame","miligram"],
                           ["fl. oz.", "fluid ounce", "fl oz"]]
+        //pcs lupa
         var result = ""
     outerloop: for units in unitsArray {
         //units = array @ unitArray
         for unit in units {
             //unit == string @ units
-            if input == unit {
+            
+            //lowercased not working (ml lowercase)
+            if input.lowercased() == unit.lowercased() {
                 result = units[0]
+                print(units[0])
                 break outerloop
             }
         }

@@ -24,6 +24,8 @@ struct recookAppApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
+
+            
 //            AddRecipeViewori()
 //            AddIngredientRowView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)

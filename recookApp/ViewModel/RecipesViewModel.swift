@@ -8,9 +8,12 @@
 import Foundation
 import CoreData
 
-//extension RecipesView {
+
 //    
-//    class AddRecipeViewModel: ObservableObject {
+    class RecipeViewModel: ObservableObject {
+        
+//        @Published var recipes: [Recipe] = PersistenceController.shared.getAllRecipe()
+        
 //        
 //        //MARK: core data
 //        let container: NSPersistentContainer
@@ -36,5 +39,5 @@ import CoreData
 //            }
 //        }
 //        
-//    }
-//}
+    }
+

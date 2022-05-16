@@ -23,7 +23,8 @@ struct ListCategoryView: View {
         ScrollView{
         WaterfallGrid(fetchedRecipes, id: \.self) { Recipe in
             NavigationLink(destination: DetailRecipeView(recipe: Recipe)) {
-                CardRecipeView(recipe: Recipe)
+//                CardRecipeView(recipe: Recipe)
+                //pake geom
                 
             }
         }

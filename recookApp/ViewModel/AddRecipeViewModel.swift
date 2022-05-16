@@ -12,8 +12,13 @@ extension AddRecipeViewori {
     class AddRecipeViewModel: ObservableObject {
         
         
+        
         var categories = ["Uncategorized","Breakfast", "Rice","Noodle","Salad","Soup","Dessert","Beef","Chicken","Seafood","Vegetable","Beverage","Side Dish","Baking"]
         //to do: masukin categories lengkap
+        
+        //update
+//        @Published var isNewData = false
+//        @Published var updateItem: Recipe
         
         @Published var isShowingPhotoPicker = false
         @Published var title = ""
@@ -26,8 +31,8 @@ extension AddRecipeViewori {
         @Published var yield = ""
         @Published var note = ""
         @Published var image: Data = .init(count: 0)
-        @Published var ingredients: [HIngredient] = [HIngredient(qty: "", unit: "", name: "", offset: 0, isSwiped: false)]
-        @Published var steps: [HStep] = [HStep(step_text: "")]
+        @Published var ingredients: [HIngredient] = [HIngredient]()
+        @Published var steps: [HStep] = [HStep]()
         
 //        @Published var ingredientRowCount = 1
         
@@ -79,7 +84,11 @@ extension AddRecipeViewori {
                 let recipeStep = Step(context: context)
                 recipeStep.order = Int64(index+1)
                 recipeStep.step_text = step.step_text
-                recipeStep.duration = Int64(timeToMinutes(hour: step.hourDuration, minute: step.minuteDuration))
+                if step.timerOn{
+                    recipeStep.duration = Int64(timeToMinutes(hour: step.hourDuration, minute: step.minuteDuration))
+                } else {
+                    recipeStep.duration = 0
+                }
                 recipeStep.header = newRecipe
                 
 //                newRecipe.addToSteps(recipeStep)

@@ -15,7 +15,7 @@ struct PersistenceController {
     static var preview: PersistenceController = {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
-        for i in 0..<10 {
+        for i in 0..<5 {
             let newRecipe = Recipe(context: viewContext)
             newRecipe.title = "Dummy Recipe \(i)"
             newRecipe.category = "Breakfast"
@@ -25,7 +25,26 @@ struct PersistenceController {
             newRecipe.note = "eden's favourite"
             newRecipe.image = UIImage(named: "default")?.jpegData(compressionQuality: 1.0)
             newRecipe.source = "google"
-            newRecipe.ingredients = []
+            newRecipe.time_added = Date()
+            
+            
+            for i in 0..<4 {
+                let recipeIngredient = Ingredient(context: viewContext)
+                recipeIngredient.order = Int64(i+1)
+                recipeIngredient.name = "itemname \(i)"
+                recipeIngredient.unit = "kg"
+                recipeIngredient.qty = 20
+                recipeIngredient.header = newRecipe
+                //dua2 bisa
+//                newRecipe.addToIngredients(recipeIngredient)
+                let recipeStep = Step(context: viewContext)
+                recipeStep.order = Int64(i+1)
+                recipeStep.step_text = "Lorem ipsum dolor sit amet"
+                recipeStep.duration = 20
+                recipeStep.header = newRecipe
+
+            }
+    
         }
         do {
             try viewContext.save()
@@ -63,6 +82,19 @@ struct PersistenceController {
             }
         })
     }
+    
+    //remove this
+//    func getAllRecipe() -> [Recipe] {
+//            let context = container.viewContext
+//           let request: NSFetchRequest<Recipe> = Recipe.fetchRequest()
+//        request.sortDescriptors = [NSSortDescriptor(keyPath: \Recipe.time_added, ascending: false )]
+//           do {
+//               return try context.fetch(request)
+//           } catch {
+//               return []
+//           }
+//           
+//       }
     
     func save(completion: @escaping (Error?) -> () = {_ in}){
         let context = container.viewContext

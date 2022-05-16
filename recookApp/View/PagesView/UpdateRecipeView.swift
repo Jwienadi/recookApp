@@ -1,31 +1,35 @@
 //
-//  AddRecipeView.swift
+//  UpdateRecipeView.swift
 //  recookApp
 //
-//  Created by Jessica Wienadi on 28/03/22.
+//  Created by Jessica Wienadi on 04/05/22.
 //
 
 import SwiftUI
 
-struct AddRecipeViewori: View {
+struct UpdateRecipeView: View {
     @Environment(\.managedObjectContext) var viewContext
     @Environment(\.presentationMode) var presentation
-//    @State private var showingSuccessAlert = false
-    @StateObject private var viewModel = AddRecipeViewModel()
-    //    @State var steps: [HStep] = [HStep(step_text: "",hourDuration: "", minuteDuration: "")]
+    @State private var showingSuccessAlert = false
+    @ObservedObject private var viewModel: UpdateRecipeViewModel
+    let cdRecipe: Recipe
     
-    //image vars
+    init(recipe: Recipe) {
+        self.cdRecipe = recipe
+        self.viewModel = UpdateRecipeViewModel(recipe: recipe)
+    }
+
     @State private var showImage: Bool = false
     @State private var isShowingImagePicker: Bool = false
     @State private var sourceType : UIImagePickerController.SourceType = .photoLibrary
     @State private var isIngPasteViewPresented = false
-    @State private var isStepPasteViewPresented = false
     
-    //dataHelper gajadi pake indexnya. pke 1 array aja trs call indices pas saving di forloop. Lihat ss
-    
+
     @State private var showPasteView = false
+    let timerOn = false
+    
     var body: some View {
-    NavigationView{
+        //        NavigationView{
         ScrollView {
             VStack(alignment: .leading, spacing: 5){
                //MARK: IMAGE
@@ -41,9 +45,9 @@ struct AddRecipeViewori: View {
                             .renderingMode(.original)
                             .resizable()
                             .frame(maxWidth: .infinity)
-                            .frame(height: 200)
-                            .scaledToFill()
+                        //                        .scaledToFill()
                         //                        .aspectRatio(contentMode: .fill)
+                            .frame(height: 200)
                             .padding(.bottom)
                         //                        .cornerRadius(10)
                         //                        .shadow(color: Color("light"), radius: 10, x: -10, y: -10)
@@ -51,7 +55,12 @@ struct AddRecipeViewori: View {
                         
                     }
                     .actionSheet(isPresented: self.$isShowingImagePicker) {
-                        ActionSheet(title: Text("Select anyone"), message: Text("Upload Image"), buttons: [.default(Text("PhotoLibrary")) {
+                        ActionSheet(title: Text("Select anyone"), message: Text("Please select one of the option."), buttons: [.default(Text("Camera")) {
+                            self.sourceType = .camera
+                            self.showImage.toggle()
+                            
+                            
+                        }, .default(Text("PhotoLibrary")) {
                             self.sourceType = .photoLibrary
                             self.showImage.toggle()
                             
@@ -203,7 +212,7 @@ struct AddRecipeViewori: View {
                         Label("Add", systemImage: "plus")
                     }
                     
-                    .padding()
+                    .padding(.trailing)
                     .frame(maxWidth: .infinity, alignment: .trailing)
                 }
                 .padding(.top)
@@ -219,14 +228,13 @@ struct AddRecipeViewori: View {
                                 .font(Font.body.weight(.semibold))
                             Spacer()
                             Button("Paste and add"){
-                                isStepPasteViewPresented.toggle()
+                                
                             }
                             .frame(alignment: .trailing)
                             .padding(.trailing)
                         }
                         //row
                         ForEach(0..<viewModel.steps.count, id:\.self ){ index in
-                            
                             AddStepRowView(step: $viewModel.steps[index].step_text, order: index+1, showTimer: $viewModel.steps[index].timerOn, hour: $viewModel.steps[index].hourDuration, minute: $viewModel.steps[index].minuteDuration)
                         }
                         .padding(.leading)
@@ -238,7 +246,7 @@ struct AddRecipeViewori: View {
                             Label("Add", systemImage: "plus")
                         }
                         //                        .padding(.horizontal)
-                        .padding()
+                        .padding(.trailing)
                         .frame(maxWidth: .infinity, alignment: .trailing)
                     }
                     
@@ -259,29 +267,24 @@ struct AddRecipeViewori: View {
             .fixedSize(horizontal: false, vertical: true)
             .frame(maxWidth: .infinity)
             .background(Color("BgColor"))
-        }
-        .navigationTitle("Add Recipe")
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing){
-                //ganti
-                Button("Save") {
-                    viewModel.addRecipe(context: viewContext)
-//                    showingSuccessAlert = true
-                    self.presentation.wrappedValue.dismiss()
-                    
-                }
-            }
-                ToolbarItem(placement: .navigationBarLeading){
-                    Button("Cancel") {
+            .navigationTitle("Add Recipe")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing){
+                    //ganti
+                    Button("Save") {
+                        viewModel.updateRecipe(context: viewContext, updateRecipe: cdRecipe)
+                        showingSuccessAlert = true
                         presentation.wrappedValue.dismiss()
+                        
                     }
-            }}
-        .sheet(isPresented: $isIngPasteViewPresented) { PasteViewIngredient.init(isPresented: $isIngPasteViewPresented, ingredients: $viewModel.ingredients)}
-        .sheet(isPresented: $isStepPasteViewPresented) { PasteViewStep.init(isPresented: $isStepPasteViewPresented, steps: $viewModel.steps)}
-//        .alert(isPresented: $showingSuccessAlert) {
-//            Alert(title: Text("Recipe Saved!"),dismissButton: .default(Text("OK")))
-//        }
+                    .alert(isPresented: $showingSuccessAlert) {
+                        Alert(title: Text("Recipe Saved!"),dismissButton: .default(Text("OK")))
+                    }
+                }}
+        }
+
+        .popover(isPresented: $isIngPasteViewPresented) { PasteViewIngredient.init(isPresented: $isIngPasteViewPresented, ingredients: $viewModel.ingredients)}
         //This will call the image picker
         .sheet(isPresented: self.$showImage) {
             ImagePicker(images: $viewModel.image, show: self.$showImage, sourceType: self.sourceType)
@@ -292,17 +295,11 @@ struct AddRecipeViewori: View {
         
     }
     
-    //navbar
-}
-    
     
 }
 
-struct AddRecipeViewori_Previews: PreviewProvider {
-    static var previews: some View {
-        AddRecipeViewori()
-    }
-}
-
-
-
+//struct UpdateRecipeView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        UpdateRecipeView()
+//    }
+//}

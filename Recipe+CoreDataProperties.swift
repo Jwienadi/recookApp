@@ -74,6 +74,7 @@ extension Recipe {
         }
     }
     
+    
 //    public var wImage: Data {
 //        guard let img = UIImage(named: "default") else { return }
 //        let data = img.jpegData(compressionQuality: 1)

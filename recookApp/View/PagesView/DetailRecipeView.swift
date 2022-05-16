@@ -20,7 +20,11 @@ struct DetailRecipeView: View {
 //
 //    }
     
-     let recipe: Recipe
+    @ObservedObject var recipe: Recipe
+    @State private var showDeleteAlert = false
+    @State private var showEditView = false
+    @State private var startCooking = false
+    
     
     var body: some View {
         ScrollView {
@@ -103,31 +107,55 @@ struct DetailRecipeView: View {
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
                     Button("Cook"){
                         //open pop up > mode memasak
+                        startCooking.toggle()
                     }
                     Menu(content: {
-                        Button(action: emptyfunc) {
+                        Button(action:{
+                            showEditView.toggle()
+//                            recipe.objectWillChange.send()
+                        }){
                                 Label("Edit Recipe", systemImage: "pencil")
-                            }
-                        Button(role: .destructive, action: emptyfunc) {
+                        }
+                            //plan: pake add recipevm tp if update, datanya diisi dulu? ad tutor u2b cb cek
+                            
+                            
+                        Button(role: .destructive, action: {
+                            showDeleteAlert.toggle()
+                    
+                            //DELETE OK, but add alert!!!
+                            
+                        }) {
                                 Label("Delete Recipe", systemImage: "trash")
                             }
                             }, label: {Image(systemName: "ellipsis.circle")
 //                                    .font(.title3)
                                 .foregroundColor(.accentColor)})
+                    .alert(isPresented:$showDeleteAlert) {
+                                Alert(
+                                    title: Text("Are you sure you want to delete this recipe?"),
+                                    message: Text("This action cannot be undone"),
+                                    primaryButton: .destructive(Text("Delete")) {
+                                        PersistenceController.shared.delete(recipe)
+                                    },
+                                    secondaryButton: .cancel()
+                                )
+                            }
                 }
             }
-            
+            NavigationLink("", destination: UpdateRecipeView(recipe: recipe), isActive: $showEditView)
+//            NavigationLink("", destination: cookView(recipe: recipe), isActive: $startCooking)
         }
-    }
-    func emptyfunc(){
+        .fullScreenCover(isPresented: $startCooking, onDismiss: {UIApplication.shared.isIdleTimerDisabled = true}){cookView(recipe: recipe)}
         
     }
+
 }
 
 
 //
 //struct DetailRecipeView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        DetailRecipeView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+//        DetailRecipeView(recipe: PersistenceController.preview.container.viewContext.registeredObjects.first(where: { $0 is Recipe }) as! Recipe).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+//        
 //    }
 //}

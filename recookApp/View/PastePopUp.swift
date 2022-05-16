@@ -36,10 +36,10 @@ struct Popup<T: View>: ViewModifier {
     }
 }
 
-struct Popup1_Previews: PreviewProvider {
-    static var previews: some View {
-        Color.clear
-            .modifier(Popup(isPresented: true, alignment: .center, content: PasteViewIngredient.init))
-            .previewDevice("iphone12")
-    }
-}
+//struct Popup1_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Color.clear
+//            .modifier(Popup(isPresented: true, alignment: .center, content: PasteViewIngredient.init))
+//            .previewDevice("iphone12")
+//    }
+//}

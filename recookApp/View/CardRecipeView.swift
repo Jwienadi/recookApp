@@ -7,14 +7,15 @@
 
 import SwiftUI
 import CoreData
+import StepperView
 
 struct CardRecipeView: View {
 //    @Environment(\.managedObjectContext) private var viewContext
 //        
 //    @FetchRequest(entity: Recipe.entity(), sortDescriptors: []) var recipe: FetchedResults<Recipe>
     
-    let recipe: Recipe
-   
+    @ObservedObject var recipe: Recipe
+//    let width: CGFloat
     
     var body: some View {
         VStack(alignment: .leading, spacing: 5){
@@ -23,14 +24,22 @@ struct CardRecipeView: View {
             if self.recipe.image != nil {
 
                 Image(uiImage: UIImage(data: self.recipe.image!)!)
-                .resizable()
-                .frame(maxWidth: .infinity)
-                .frame(height: 90)
-                .cornerRadius(5)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+//                  .resizable()
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 90)
+                    .cornerRadius(5)
+               
             } else {
 
                 Image("default")
                     .resizable()
+                    .aspectRatio(contentMode: .fill)
+//                    .frame(width: 200, height: 250)
+
+//                    .frame(width: width)
+//                    .resizable()
                     .frame(maxWidth: .infinity)
                     .frame(height: 90)
                     .cornerRadius(5)
@@ -42,6 +51,8 @@ struct CardRecipeView: View {
                         .lineLimit(2)
                         .foregroundColor(.black)
                         .multilineTextAlignment(.leading)
+                        .fixedSize(horizontal: false, vertical: true)
+//                        .layoutPriority(99)
 //                        .padding(.bottom, 1)
                     HStack{
                         Group{
@@ -63,9 +74,12 @@ struct CardRecipeView: View {
                     .font(.footnote)
                     .foregroundColor(.secondary)
                     .padding(.bottom, 5)
+//                    .layoutPriority(98)
             }
+            .layoutPriority(100)
 
         }
+        
 
     }
 }
@@ -79,6 +93,11 @@ struct CardRecipeView_Previews: PreviewProvider {
 ////
         CardRecipeView(recipe: recipes)
             .environment(\.managedObjectContext, context)
+            .previewLayout(.sizeThatFits)
+        
+//        CardRecipeView(recipe: recipes)
+//            .environment(\.managedObjectContext, context)
+//            .previewDevice("iPad Pro (10.5-inch)")
 //
 //
 //

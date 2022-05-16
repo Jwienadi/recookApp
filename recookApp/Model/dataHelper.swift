@@ -21,6 +21,7 @@ struct HStep {
     var step_text: String = ""
     var hourDuration: String = ""
     var minuteDuration: String = ""
+    var timerOn: Bool
 //    var order: Int
 }
 
