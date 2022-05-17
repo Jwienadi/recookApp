@@ -30,6 +30,19 @@ extension Ingredient {
         unit ?? ""
     }
     
+    public var qtyString: String {
+        
+        if qty.truncatingRemainder(dividingBy: 1) == 0 {
+            //int
+            return String(Int(qty))
+        } else {
+            //double
+            return String(format: "%.3f", qty)
+        }
+        
+        
+    }
+    
    
     
 

@@ -27,7 +27,7 @@ struct ingChecklistData {
     let ing: Ingredient
     
     var ingString: String {
-        let qty = String(format: "%.1f", ing.qty)
+        let qty = ing.qtyString
         let text = "\(qty) \(ing.wUnit) \(ing.wName)"
         return text
     }

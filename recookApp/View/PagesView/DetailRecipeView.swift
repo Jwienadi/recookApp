@@ -87,7 +87,7 @@ struct DetailRecipeView: View {
                 
                 //list ingredients here sort by "order" call array lansgung
                 ForEach(recipe.ingredientArray) { ing in
-                    Text("\(ing.qty) \(ing.wUnit) \(ing.wName)")
+                    Text("\(ing.qtyString) \(ing.wUnit) \(ing.wName)")
                 }
                 
                 Text("Steps")
