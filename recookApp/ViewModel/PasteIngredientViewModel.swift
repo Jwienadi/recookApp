@@ -8,6 +8,7 @@
 import Foundation
 
 extension Array {
+    //klo smpe out of range, jd nil , ngga error
     func ref(_ i:Int) -> Element? {
         return 0 <= i && i < count ? self[i] : nil
     }
@@ -15,89 +16,150 @@ extension Array {
 
 extension PasteViewIngredient{
     func stringToIngredientsArr(IngString: String) -> [HIngredient]?{
-        let IngArrFull = IngString.components(separatedBy: "\n")
+        let CleanIngString = IngString.trimmingCharacters(in: .whitespacesAndNewlines)
+        let IngArrFull = CleanIngString.components(separatedBy: "\n")
         var IngArrSplit: [HIngredient] = []
         var res: HIngredient? =  nil
-        if IngArrFull[0] != IngString {
-        IngArrFull.forEach {ing in
-            res = ingredientSpliiter(Ing: ing)
-            //res kosong whyy
-            IngArrSplit.append(res!)
-        }
+        //        if IngArrFull[0] != IngString {
+        if (IngArrFull[0] != CleanIngString) || (IngArrFull[0] != "") {
+            IngArrFull.forEach {ing in
+                let cleanIng = ing.trimmingCharacters(in: .whitespacesAndNewlines)
+                
+                if cleanIng != "" {
+                    res = ingredientSpliiter(Ing: cleanIng)
+                    IngArrSplit.append(res!)
+                    
+                }
+            }
         }
         return IngArrSplit
         
     }
     
     func ingredientSpliiter(Ing: String) -> HIngredient{
-        var amount = 0
+        var amount: Double = 0
+        var amountString: String = ""
         var unit = ""
         //            var name = ""
         //       let units = ["pcs", "mg", "kg", "gram", "mL", "L", "tbsp", "tsp", "ounce", "cup", "quart", "pint", "gallon", "pound", "fl. oz."]
-        let units = ["kg","kilogram","kilograms", "kilogramme","cup","cups", "gram", "gr", "grams", "g", "gramme", "tbsp","tablespoon", "tablespoons", "tbsp.", "tbs", "tbs.", "tsp","teaspoon", "teaspoons", "tsp.", "t", "L","liter", "litre", "l", "mL", "milliliter", "milliliters", "cc", "millilitre", "millilitres", "lb", "pound", "lbs", "ounce", "ounces", "oz", "mg", "milligrams", "milligram", "milligrame","miligram", "fl. oz.", "fluid ounce", "fl oz"]
+        let units = ["kg","kilogram","kilograms", "kilogramme", "cup","cups", "gram", "gr", "grams", "g", "gramme","tbsp","tablespoon", "tablespoons", "tbsp.", "tbs", "tbs.","sdm","sdt.","sendok makan","tsp","teaspoon", "teaspoons", "tsp.", "t", "sdt", "sdt.", "sendok teh", "l","liter", "litre", "l", "ml", "milliliter", "milliliters", "cc", "millilitre", "millilitres","mililiter", "mililitre", "mililiters", "mililitres","lb", "pound", "lbs","ounce", "ounces", "oz","mg", "milligrams", "milligram", "milligrame","miligram","fl. oz.", "fluid ounce", "fl oz","pcs"]
         
-            //pcs belom
-        // masih case sensitive
+       
         
         var amountUnit = ""
+        var userAmountUnit = ""
         var cleanIng = Ing.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+       cleanIng = cleanIng.replacingOccurrences(of: "½", with: ".5")
+//        cleanIng = cleanIng.replacingOccurrences(of: "1/2", with: ".5")
+        cleanIng = cleanIng.replacingOccurrences(of: "¼", with: ".25")
+        cleanIng = cleanIng.replacingOccurrences(of: "¾", with: ".75")
+        cleanIng = cleanIng.replacingOccurrences(of: ",", with: ".")
+        
+        //split num unit nama
         let array = cleanIng.components(separatedBy: " ")
+        
+        //cek arr(0) number gak, if yes
         if let _amount = array.ref(0) {
-            amount = Int(_amount) ?? 0
-            if (Int(_amount) != nil) {
-                amountUnit += _amount
+            
+//            units.contains(_unit)
+//            _amount = _amount.replacingOccurrences(of: "½", with: ".5")
+//            _amount = _amount.replacingOccurrences(of: "¼", with: ".25")
+//            _amount = _amount.replacingOccurrences(of: "¾", with: ".75")
+            
+            //MARK: BERUBAH DI SINI , UPDATE BAB 4
+            //bwt cek arr 0 is num or not
+            amount = Double(_amount) ?? 0
+//            amountString = {
+//                if amount.truncatingRemainder(dividingBy: 1) == 0 {
+//                    //int
+//                    return String(Int(amount))
+//                } else {
+//                    //double
+////                    return String(format: "%f", amount)
+//                    return "\(amount)"
+//                }
+//            }()
+            if (Double(_amount) != nil) {
+                amountString = {
+                    if amount.truncatingRemainder(dividingBy: 1) == 0 {
+                        //int
+                        return String(Int(amount))
+                    } else {
+                        //double
+    //                    return String(format: "%f", amount)
+                        return "\(amount)"
+                    }
+                }()
+                //append number ke string if amount nya ngga nil
+//                if amount.truncatingRemainder(dividingBy: 1) == 0 {
+//                    //int
+//                    amountUnit += _amount
+//                    userAmountUnit += _amount
+//                } else {
+                    //double
+                print(_amount)
+                print(amount)
+                print(amountString)
+                    amountUnit += _amount
+                    userAmountUnit += _amount
+//                }
+                
+              
             }
         }
         
-        if let _unit = array.ref(1),
+        if let _unit = array.ref(1)?.lowercased(),
+           //split ingredients, check arr(1) = unit ngga
            units.contains(_unit){
+            
+            userAmountUnit += " "
+            userAmountUnit += _unit
+            
+            //cek unit yg ditulis masuk list ga, if yes, choose one dari picker
             unit = unitValidate(input: _unit)
             amountUnit += " "
             amountUnit += unit
+            
+           
         }
         amountUnit = amountUnit.trimmingCharacters(in: .whitespaces)
+        userAmountUnit = userAmountUnit.trimmingCharacters(in: .whitespaces)
         
-        if let range = cleanIng.range(of: amountUnit) {
+        if let range = cleanIng.lowercased().range(of: userAmountUnit.lowercased()) {
             cleanIng.removeSubrange(range)
+            cleanIng = cleanIng.trimmingCharacters(in: .whitespaces)
         }
         print("amount", amount)
         print("unit", unit)
+        print("nama", cleanIng)
         
         
-        
-        return HIngredient(qty: String(amount), unit: unit, name: cleanIng, offset: 0, isSwiped: false)
+        //MARK: BERUBAH DISINI
+        return HIngredient(qty: amountString, unit: unit, name: cleanIng, offset: 0, isSwiped: false)
         
     }
     
     func unitValidate(input: String) -> String{
-        //    let kgopt = ["kilogram","kilograms", "kg", "kilogramme"]
-        //    let cupopt = ["cup","cups"]
-        //    let gramopt = ["g", "gr", "grams", "gram", "gramme"]
-        //    let tbspopt = ["tablespoon", "tablespoons", "tbsp", "tbsp.", "tbs", "tbs."]
-        //    let tspopt = ["teaspoon", "teaspoons", "tsp.", "t"]
-        //    let lopt = ["liter", "litre", "l"]
-        //    let mlopt = ["ml", "milliliter", "milliliters", "cc", "millilitre", "millilitres"]
-        //    let poundopt = ["pound", "lb", "lbs"]
-        //    let ounceopt = ["ounce", "ounces", "oz"]
-        //    let mgopt = ["miligram", "milligrams", "mg", "milligrame"]
         let unitsArray = [["kg","kilogram","kilograms", "kilogramme"],
                           ["cup","cups"],
                           ["gram", "gr", "grams", "g", "gramme"],
                           ["tbsp","tablespoon", "tablespoons", "tbsp.", "tbs", "tbs.","sdm","sdt.","sendok makan"],
                           ["tsp","teaspoon", "teaspoons", "tsp.", "t", "sdt", "sdt.", "sendok teh"],
                           ["L","liter", "litre", "l"],
-                          ["mL", "milliliter", "milliliters", "cc", "millilitre", "millilitres"],
+                          ["mL", "milliliter", "milliliters", "cc", "millilitre", "millilitres", "mililiter", "mililitre", "mililiters", "mililitres"],
                           ["lb", "pound", "lbs"],
                           ["ounce", "ounces", "oz"],
                           ["mg", "milligrams", "milligram", "milligrame","miligram"],
-                          ["fl. oz.", "fluid ounce", "fl oz"]]
+                          ["fl. oz.", "fluid ounce", "fl oz"],
+                          ["pcs"]]
         //pcs lupa
         var result = ""
     outerloop: for units in unitsArray {
         //units = array @ unitArray
         for unit in units {
             //unit == string @ units
-            
+            print("\(input.lowercased()) == \(unit.lowercased())")
             //lowercased not working (ml lowercase)
             if input.lowercased() == unit.lowercased() {
                 result = units[0]

@@ -7,78 +7,42 @@
 
 import SwiftUI
 import UIKit
-
+import Lottie
 struct cookView: View {
     @Environment(\.presentationMode) var presentation
     @ObservedObject var recipe: Recipe
     @State private var selectedPage = 0
-    
     init(recipe: Recipe){
         self.recipe = recipe
         UIApplication.shared.isIdleTimerDisabled = true
     }
-    
     var body: some View {
         NavigationView{
-        VStack{
-            TabView(selection: $selectedPage ){
-                cookChecklistView(ing: recipe.ingredientArray, title: recipe.wTitle).tag(0)
-                //view checklist
-//                ForEach
-                ForEach(0..<recipe.stepArray.count, id:\.self){ i in
-                    cookStepView(step: recipe.stepArray[i], curStep: i+1, totStep: recipe.stepArray.count).tag(i+1)
+            ZStack{
+                VStack{
+                    TabView(selection: $selectedPage ){
+                        cookChecklistView(ing: recipe.ingredientArray, title: recipe.wTitle).tag(0)
+                        ForEach(0..<recipe.stepArray.count, id:\.self){ i in
+                            cookStepView(step: recipe.stepArray[i], curStep: i+1, totStep: recipe.stepArray.count).tag(i+1)
+                        }
+                        cookEndView().tag(recipe.stepArray.count + 1)
                     }
+                    .tabViewStyle(.page(indexDisplayMode: .always))
+                    .indexViewStyle(.page(backgroundDisplayMode: .always))
+                    Text("Swipe to proceed")
+                        .font(.callout)
+                        .foregroundColor(.secondary)
                 }
-            .tabViewStyle(.page(indexDisplayMode: .always))
-            .indexViewStyle(.page(backgroundDisplayMode: .always))
-            
-            //(indexDisplayMode: .always )
-//                HStack{
-//                    Button(action: {
-//                        if selectedPage > 0 {
-//                            withAnimation { selectedPage -= 1 }
-//                        }
-//                    }) {
-//                        Image(systemName: "chevron.backward.circle.fill")
-//                            .font(.system(size: 17, weight: .semibold))
-//                        Text("Prev Step")
-//                            .font(.body.bold())
-//                    }
-//                        .padding()
-//                        .foregroundColor(.white)
-//                        .background(Color.accentColor)
-//                        .frame(height: (selectedPage != 0) ? nil : 0)
-//                        .disabled((selectedPage != 0))
-                    
-//                    Spacer().frame(width: 50)
-                    
-//                    Button(action: {
-//                                           if selectedPage < recipe.stepArray.count {
-//                                               withAnimation { selectedPage += 1 }
-//                                           }
-//                                       }) {
-//                                           Image(systemName: "chevron.backward.circle.fill")
-//                                               .font(.system(size: 17, weight: .semibold))
-//                                           Text("Prev Step")
-//                                               .font(.body.bold())
-//                                       }
-//                                           .padding()
-//                                           .foregroundColor(.white)
-//                                           .background(Color.accentColor)
-//                                           .frame(height: (recipe.stepArray.count != 0) ? nil : 0)
-//                                           .disabled((recipe.stepArray.count != 0))
-//                }
-        }
-            .navigationTitle("Cook")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar{
-                    Button("Done"){
-                        //open pop up > mode memasak
+                .navigationTitle("Cook")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar{
+                    Button("Close"){
                         UIApplication.shared.isIdleTimerDisabled = false
                         self.presentation.wrappedValue.dismiss()
                     }
+                }
             }
-    }
+        }
     }
 }
 

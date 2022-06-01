@@ -29,13 +29,14 @@ struct DoubleField: View {
     @Binding var doubleString: String
     var body: some View {
         return TextField("0", text: $doubleString)
-        .keyboardType(.numberPad)
+        .keyboardType(.decimalPad)
         .frame(width: 50)
         .multilineTextAlignment(. center)
         .onReceive(Just(doubleString)) { newValue in
-                        let filtered = newValue.filter { "0123456789.".contains($0) }
-                        if filtered != newValue {
-                            self.doubleString = filtered
+                        let filter1 = newValue.filter { "0123456789.,".contains($0) }
+                        let filter2 = String(filter1.map {$0 == "," ? "." : $0 })
+                        if filter2 != newValue {
+                            self.doubleString = filter2
                         }}
 //        .onAppear(perform: {
 //            intString = "\(int)"

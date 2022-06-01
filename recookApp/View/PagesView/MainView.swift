@@ -12,12 +12,12 @@ struct MainView: View {
         TabView {
                    RecipesView()
                        .tabItem {
-                           Label("Recipes", systemImage: "list.dash")
+                           Label("Recipes", systemImage: "fork.knife")
                        }
 
                    CategoriesView()
                        .tabItem {
-                           Label("Categories", systemImage: "square.and.pencil")
+                           Label("Categories", systemImage: "rectangle.3.group")
                        }
                }
     }

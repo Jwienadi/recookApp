@@ -8,47 +8,52 @@
 import SwiftUI
 import Combine
 
+//sound
+import AVKit
+
 struct timerView: View {
-    
     @StateObject var viewModel: timerViewModel
-    @State var isPaused: Bool = false
+    @State var isPaused: Bool = true
     
+    //sound
+    @State var audioPlayer: AVAudioPlayer!
     
-    
-//    init(timeMin: Int){
-//        self.viewModel = timerViewModel(timeMin: timeMin)
-//    }
     
     var body: some View {
         VStack {
             Text(viewModel.secToTime(time: viewModel.timeRemaining))
                 .font(.largeTitle)
+            if viewModel.timeRemaining==0{
+                Text("Timer Done")
+                    .foregroundColor(.green)
+                    .font(.title.bold())
+                    .onAppear(perform: {
+                        isPaused.toggle()
+                        //sound
+                        audioPlayer.numberOfLoops = 1
+                        self.audioPlayer.play()
+                    })
+            }
             HStack{
                 Button(action:{
-                    if isPaused == true{
+                    if isPaused == false{
                         viewModel.cancelTimer()
                         isPaused.toggle()
-                    } else if isPaused == false {
+                    } else if isPaused == true {
                         viewModel.instantiateTimer()
                         isPaused.toggle()
                     }
-
+                    
                 }){
-                Image(systemName: isPaused ? "pause" : "play")
-                            .font(.system(size: 25, weight: .semibold))
-                            .foregroundColor(isPaused ? Color(UIColor.red) : .accentColor)
-//                            .padding()
-//                            .padding()
+                    Image(systemName: isPaused ? "play" : "pause")
+                        .font(.system(size: 25, weight: .semibold))
+                        .foregroundColor(isPaused ? .accentColor : Color(UIColor.red))
                 }
                 .padding(13)
                 .background(Color.accentColor.opacity(0.2))
                 .clipShape(Circle())
-//                .cornerRadius()
-//                .background(.gray)
-                
-//
                 Button(action: {
-                    viewModel.restartTimer()
+                    viewModel.restartTimer(isPaused: isPaused)
                 }) {
                     Text("Restart")
                         .foregroundColor(.secondary)
@@ -57,11 +62,7 @@ struct timerView: View {
                 .padding(13)
                 .background(Color.accentColor.opacity(0.2))
                 .cornerRadius(25)
-
             }
-//            .onAppear {
-//                self.instantiateTimer()
-//            }
             .onDisappear {
                 viewModel.cancelTimer()
             }.onReceive(viewModel.timer) { _ in
@@ -70,13 +71,16 @@ struct timerView: View {
                 } else {
                     viewModel.cancelTimer()
                 }
-        }
-            
+            }
         }
         .padding()
+        //sound
+        .onAppear {
+            let sound = Bundle.main.path(forResource: "timer", ofType: "wav")
+            self.audioPlayer = try! AVAudioPlayer(contentsOf: URL(fileURLWithPath: sound!))
+               }
+        
     }
-    
-    
 }
 struct timerView_Previews: PreviewProvider {
     static var previews: some View {

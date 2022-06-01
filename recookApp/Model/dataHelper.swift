@@ -22,6 +22,12 @@ struct HStep {
     var hourDuration: String = ""
     var minuteDuration: String = ""
     var timerOn: Bool
+    var offset: CGFloat
+    var isSwiped: Bool
 //    var order: Int
 }
+
+public var units = ["pcs", "kg", "gram", "mL", "L", "tbsp", "tsp", "ounce", "cup", "quart", "pint", "gallon", "pound", "fl. oz."]
+
+public var categories = ["No Category", "Main Course", "Dessert", "Side Dish", "Appetizer", "Salad", "Bread", "Soup /Stew", "Beverage", "Snack"]
 

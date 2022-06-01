@@ -7,50 +7,29 @@
 
 import SwiftUI
 
-
 struct PasteViewIngredient: View {
     @State private var pasteText = ""
     @Binding var isPresented: Bool
     @Binding var ingredients: [HIngredient]
-//    @State private var isRecipe: Bool
-//    private let placeholderString: String
-    
-    
-//    init(isRecipe: Bool){
-//        if isRecipe {
-//            self.placeholderString = "Copy and paste recipe ingredients seperated by "
-//        } else {
-//            self.placeholderString = "Paste recipe steps seperated by enter"
-//        }
-//    }
-    
     var body: some View {
-            VStack(spacing: 0){
-                //give example
-                //masi case sensitive
-            CustomTextEditor.init(placeholder: "Paste ingredients here!\n one ingredient/line \nExample: \n1 kg cake flour \n150 ml milk \n 1 pcs apple ", text: $pasteText)
-                    .frame(maxWidth: .infinity, maxHeight: 200)
-
+        VStack(spacing: 0){
+            CustomTextEditor.init(placeholder: "Paste ingredients here!\none ingredient/line \nExample: \n1 kg cake flour \n150 ml milk \n1 pcs apple ", text: $pasteText)
+                .frame(maxWidth: .infinity, maxHeight: 200)
             Button("Add"){
                 let a = stringToIngredientsArr(IngString: pasteText)
                 if a != nil {
-                ingredients.append(contentsOf: a!)
+                    ingredients.append(contentsOf: a!)
                 }
                 self.isPresented = false
             }
             .frame(maxWidth: .infinity, maxHeight: 50)
             .background(.white)
-                
-            }
-//            .clipShape(RoundedRectangle(cornerRadius:10))
-            .padding()
-            .background(.quaternary)
-            .frame(width: 350)
-            .cornerRadius(10)
-        
-            
         }
-   
+        .padding()
+        .background(.quaternary)
+        .frame(width: 350)
+        .cornerRadius(10)
+    }
 }
     
     

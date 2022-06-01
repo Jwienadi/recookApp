@@ -5,7 +5,7 @@
 //  Created by Jessica Wienadi on 28/03/22.
 //
 
-import Foundation
+
 import SwiftUI
 
 struct ImagePicker: UIViewControllerRepresentable {

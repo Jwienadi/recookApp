@@ -37,7 +37,8 @@ extension Ingredient {
             return String(Int(qty))
         } else {
             //double
-            return String(format: "%.3f", qty)
+//            return String(format: "%f", qty)
+            return "\(qty)"
         }
         
         

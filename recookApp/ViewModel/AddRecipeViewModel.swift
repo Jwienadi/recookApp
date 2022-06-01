@@ -11,18 +11,9 @@ import CoreData
 extension AddRecipeViewori {
     class AddRecipeViewModel: ObservableObject {
         
-        
-        
-        var categories = ["Uncategorized","Breakfast", "Rice","Noodle","Salad","Soup","Dessert","Beef","Chicken","Seafood","Vegetable","Beverage","Side Dish","Baking"]
-        //to do: masukin categories lengkap
-        
-        //update
-//        @Published var isNewData = false
-//        @Published var updateItem: Recipe
-        
         @Published var isShowingPhotoPicker = false
         @Published var title = ""
-        @Published var selectedCategory = "Uncategorized"
+        @Published var selectedCategory = "No Category"
         @Published var source = ""
         @Published var prephour = ""
         @Published var prepminute = ""
@@ -34,12 +25,6 @@ extension AddRecipeViewori {
         @Published var ingredients: [HIngredient] = [HIngredient]()
         @Published var steps: [HStep] = [HStep]()
         
-//        @Published var ingredientRowCount = 1
-        
-//        func addIngredientRow() {
-//            ingredientRowCount += 1
-//        }
-        
         func timeToMinutes(hour: String, minute: String) -> Int64 {
             let hourInt = intToString(value: hour)
             let minuteInt = intToString(value: minute)
@@ -47,6 +32,10 @@ extension AddRecipeViewori {
             return res
         }
         
+//        func removeImage{
+//            image =
+//        }
+//        
         func intToString(value: String) -> Int64 {
             let result = (value == "") ? 0 : Int64(value) ?? 0
             return result
@@ -70,17 +59,18 @@ extension AddRecipeViewori {
             newRecipe.time_added = Date()
             
             for (index, ingredient) in ingredients.enumerated(){
+                if (ingredient.qty != "") && (ingredient.unit != "") && (ingredient.name != "")  {
                 let recipeIngredient = Ingredient(context: context)
                 recipeIngredient.order = Int64(index+1)
                 recipeIngredient.name = ingredient.name
                 recipeIngredient.unit = ingredient.unit
                 recipeIngredient.qty = (ingredient.qty as NSString).doubleValue
                 recipeIngredient.header = newRecipe
-                //dua2 bisa
-//                newRecipe.addToIngredients(recipeIngredient)
+                }
             }
-
+            
             for (index, step) in steps.enumerated(){
+                if (step.step_text != "") {
                 let recipeStep = Step(context: context)
                 recipeStep.order = Int64(index+1)
                 recipeStep.step_text = step.step_text
@@ -90,22 +80,11 @@ extension AddRecipeViewori {
                     recipeStep.duration = 0
                 }
                 recipeStep.header = newRecipe
-                
-//                newRecipe.addToSteps(recipeStep)
             }
-//            save(context: context)
+            }
             PersistenceController.shared.save()
             
         }
-        
-//        func save(context: NSManagedObjectContext){
-//            do {
-//                try context.save()
-//                print("SAVE BISA")
-//            } catch let error {
-//                print("saving error. .\(error)")
-//            }
-//        }
         
     }
 }

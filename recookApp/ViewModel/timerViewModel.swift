@@ -15,9 +15,6 @@ class timerViewModel: ObservableObject{
     @Published var connectedTimer: Cancellable? = nil
     
     
-    
-    
-    
     init(timeMin: Int){
         self.timeRemaining = timeMin * 60
         self.timeSec = timeMin * 60
@@ -45,15 +42,17 @@ class timerViewModel: ObservableObject{
         return
     }
     
-    func resetCounter() {
-        self.timeRemaining = timeSec
-        return
-    }
+//    func resetCounter() {
+//        self.timeRemaining = timeSec
+//        return
+//    }
     
-    func restartTimer() {
+    func restartTimer(isPaused: Bool) {
         self.timeRemaining = timeSec
         self.cancelTimer()
+        if !isPaused{
         self.instantiateTimer()
+        }
         return
     }
     

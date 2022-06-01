@@ -19,6 +19,9 @@ struct DetailInfoView: View {
             Text(infoText)
                 .font(.callout)
                 .foregroundColor(.black)
+                .lineLimit(1)
+                .minimumScaleFactor(0.1)
+                
         }
     }
     

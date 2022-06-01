@@ -8,13 +8,7 @@
 import SwiftUI
 
 struct CategoriesView: View {
-    
-    let categories = ["Uncategorized","Breakfast", "Rice","Noodle","Salad","Soup","Dessert","Beef","Chicken","Seafood","Vegetable","Beverage","Side Dish","Baking"]
-    
-    
-    var items: [GridItem] = [GridItem(.fixed(180)), GridItem(.fixed(180))]
-//    var items: [GridItem] = [GridItem(.flexible(), spacing: 10), GridItem(.flexible(), spacing: 10)]
-//    var items: [GridItem] = Array(repeating: GridItem(.adaptive(minimum: 160)), count: 2)
+    var items: [GridItem] = Array(repeating: GridItem(.flexible()), count: 2)
     
     
     var body: some View {
@@ -25,14 +19,15 @@ struct CategoriesView: View {
               ForEach(categories, id: \.self) { category in
                   NavigationLink(destination: ListCategoryView(category: category)) {
                   CategoryCardView(category: category)
-                                       .cornerRadius(5)
-                                       .shadow(color: .black.opacity(0.35), radius: 1, x: 0, y: 2)
+//                          .padding()
+                       .cornerRadius(5)
+                       .shadow(color: .black.opacity(0.35), radius: 1, x: 0, y: 2)
                                    }
                   
         }
       }
     }
-//      .padding(.horizontal, 10)
+      .padding(.horizontal, 10)
       .navigationTitle("Categories")
       .navigationBarTitleDisplayMode(.inline)
     }

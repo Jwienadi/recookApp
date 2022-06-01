@@ -13,7 +13,7 @@ extension UpdateRecipeView {
     class UpdateRecipeViewModel: ObservableObject {
         
         
-        var categories = ["Uncategorized","Breakfast", "Rice","Noodle","Salad","Soup","Dessert","Beef","Chicken","Seafood","Vegetable","Beverage","Side Dish","Baking"]
+//        var categories = ["Uncategorized","Breakfast", "Rice","Noodle","Salad","Soup","Dessert","Beef","Chicken","Seafood","Vegetable","Beverage","Side Dish","Baking"]
         //to do: masukin categories lengkap
         
         //update
@@ -22,7 +22,7 @@ extension UpdateRecipeView {
         
         @Published var isShowingPhotoPicker = false
         @Published var title = ""
-        @Published var selectedCategory = "Uncategorized"
+        @Published var selectedCategory = "No Category"
         @Published var source = ""
         @Published var prephour = ""
         @Published var prepminute = ""
@@ -32,7 +32,7 @@ extension UpdateRecipeView {
         @Published var note = ""
         @Published var image: Data = .init(count: 0)
         @Published var ingredients: [HIngredient] = [HIngredient(qty: "", unit: "", name: "", offset: 0, isSwiped: false)]
-        @Published var steps: [HStep] = [HStep(step_text: "", timerOn: false)]
+        @Published var steps: [HStep] = [HStep(step_text: "", timerOn: false, offset: 0, isSwiped: false)]
         
         init(recipe: Recipe) {
             
@@ -96,7 +96,8 @@ extension UpdateRecipeView {
         func ingToHing(input: [Ingredient]) -> [HIngredient]{
             var Hingredients = [HIngredient]()
             input.forEach{ing in
-                Hingredients.append(HIngredient(qty: doubleToString(input: ing.qty), unit: ing.unit ?? "", name: ing.name ?? "", offset: 0, isSwiped: false))
+                Hingredients.append(HIngredient(qty: ing.qtyString, unit: ing.unit ?? "", name: ing.name ?? "", offset: 0, isSwiped: false))
+//                Hingredients.append(HIngredient(qty: doubleToString(input: ing.qty), unit: ing.unit ?? "", name: ing.name ?? "", offset: 0, isSwiped: false))
             }
             return Hingredients
         }
@@ -107,7 +108,7 @@ extension UpdateRecipeView {
                 if (step.duration != 0) {
                     timerOn = true
                 }
-                Hstep.append(HStep(step_text: step.step_text ?? "", hourDuration: minutesToH(time: step.duration) ?? "", minuteDuration: minutesOnly(time: step.duration) ?? "", timerOn: timerOn))
+                Hstep.append(HStep(step_text: step.step_text ?? "", hourDuration: minutesToH(time: step.duration) ?? "", minuteDuration: minutesOnly(time: step.duration) ?? "", timerOn: timerOn, offset: 0, isSwiped: false))
                 timerOn = false
             }
             return Hstep
@@ -122,6 +123,7 @@ extension UpdateRecipeView {
         }
         
         
+//        func updateRecipe(context: NSManagedObjectContext, updateRecipe: Recipe){
         func updateRecipe(context: NSManagedObjectContext, updateRecipe: Recipe){
 //            let updateRecipe = Recipe(context: context)
             if image.isEmpty {

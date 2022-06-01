@@ -12,45 +12,25 @@ struct PasteViewStep: View {
     @State private var pasteText = ""
     @Binding var isPresented: Bool
     @Binding var steps: [HStep]
-//    @State private var isRecipe: Bool
-//    private let placeholderString: String
-    
-    
-//    init(isRecipe: Bool){
-//        if isRecipe {
-//            self.placeholderString = "Copy and paste recipe ingredients seperated by "
-//        } else {
-//            self.placeholderString = "Paste recipe steps seperated by enter"
-//        }
-//    }
-    
     var body: some View {
-            VStack(spacing: 0){
-                //give example
-                //masi case sensitive
-            CustomTextEditor.init(placeholder: "Paste step here!\n one step/line \nExample: \ncut apples into slices\nmix flour and milk\nbake", text: $pasteText)
-                    .frame(maxWidth: .infinity, maxHeight: 200)
-
+        VStack(spacing: 0){
+            CustomTextEditor.init(placeholder: "Paste step here!\none step/line \nExample: \ncut apples into slices\nmix flour and milk\nbake", text: $pasteText)
+                .frame(maxWidth: .infinity, maxHeight: 200)
             Button("Add"){
                 let a = stringToStepsArr(StepString: pasteText)
                 if a != nil {
-                steps.append(contentsOf: a!)
+                    steps.append(contentsOf: a!)
                 }
                 self.isPresented = false
             }
             .frame(maxWidth: .infinity, maxHeight: 50)
             .background(.white)
-                
-            }
-//            .clipShape(RoundedRectangle(cornerRadius:10))
-            .padding()
-            .background(.quaternary)
-            .frame(width: 350)
-            .cornerRadius(10)
-        
-            
         }
-   
+        .padding()
+        .background(.quaternary)
+        .frame(width: 350)
+        .cornerRadius(10)
+    }
 }
     
     

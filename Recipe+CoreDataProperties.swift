@@ -32,10 +32,10 @@ extension Recipe {
         title ?? "Unknown Title"
     }
     public var wSource: String {
-        source ?? "Unknown Source"
+        source ?? "-"
     }
     public var wNote: String {
-        note ?? "No Note"
+        note ?? "-"
     }
     public var wCategory: String {
         category ?? "No Category"
