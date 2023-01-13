@@ -10,7 +10,6 @@ import SwiftUI
 struct UpdateRecipeView: View {
     @Environment(\.managedObjectContext) var viewContext
     @Environment(\.presentationMode) var presentation
-    @State private var showingSuccessAlert = false
     
     @ObservedObject private var viewModel: UpdateRecipeViewModel
     let cdRecipe: Recipe
@@ -79,6 +78,7 @@ struct UpdateRecipeView: View {
                             .resizable()
                             .scaledToFill()
                             .frame(maxWidth: .infinity, maxHeight: 200)
+                            .clipped()
                             .padding(.bottom)
                     }
                     .actionSheet(isPresented: self.$isShowingImagePicker, content: {
@@ -94,13 +94,7 @@ struct UpdateRecipeView: View {
 
                             return ActionSheet(title: Text("Upload Image"), buttons: buttons)
                         })
-//                    .actionSheet(isPresented: self.$isShowingImagePicker) {
-//                        ActionSheet(title: Text("Upload Image"), buttons: [.default(Text("PhotoLibrary")) {
-//                            self.sourceType = .photoLibrary
-//                            self.showImage.toggle()
-//
-//                        },  .cancel()])
-//                    }
+
                 }
                 //MARK: HEADER DATA
                 Group {
@@ -113,7 +107,6 @@ struct UpdateRecipeView: View {
                             .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 15))
                             .padding(.leading)
                         Picker ("Category", selection: $viewModel.selectedCategory) {
-                            //                                        Text("No Category").tag(nil as Int?)
                             ForEach(categories, id: \.self) {
                                 Text($0).tag($0)
                             }
@@ -258,13 +251,10 @@ struct UpdateRecipeView: View {
                     //ganti
                     Button("Save") {
                         viewModel.updateRecipe(context: viewContext, updateRecipe: cdRecipe)
-                        showingSuccessAlert = true
                         presentation.wrappedValue.dismiss()
                         
                     }
-                    .alert(isPresented: $showingSuccessAlert) {
-                        Alert(title: Text("Recipe Saved!"),dismissButton: .default(Text("OK")))
-                    }
+                    
                 }}
         }
 

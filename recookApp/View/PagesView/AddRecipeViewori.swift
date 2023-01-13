@@ -221,7 +221,7 @@ struct AddRecipeViewori: View {
                             } label:{
                                 Label("Add", systemImage: "plus")
                             }
-                            .padding()
+                            .padding(.trailing)
                             .frame(maxWidth: .infinity, alignment: .trailing)
                         }
                         

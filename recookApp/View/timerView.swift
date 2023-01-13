@@ -12,6 +12,7 @@ import Combine
 import AVKit
 
 struct timerView: View {
+    
     @StateObject var viewModel: timerViewModel
     @State var isPaused: Bool = true
     

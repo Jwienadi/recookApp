@@ -27,6 +27,8 @@ struct cookStepView: View {
                 Text(step.wStep_text)
                     .font(.title)
                     .padding(5)
+                    .frame(maxHeight: 150)
+                    .minimumScaleFactor(0.1)
             }
         }
     }

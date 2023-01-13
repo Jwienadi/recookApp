@@ -21,6 +21,7 @@ extension PasteViewIngredient{
         var IngArrSplit: [HIngredient] = []
         var res: HIngredient? =  nil
         //        if IngArrFull[0] != IngString {
+        //cek empty input or 1 line only
         if (IngArrFull[0] != CleanIngString) || (IngArrFull[0] != "") {
             IngArrFull.forEach {ing in
                 let cleanIng = ing.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -54,33 +55,23 @@ extension PasteViewIngredient{
 //        cleanIng = cleanIng.replacingOccurrences(of: "1/2", with: ".5")
         cleanIng = cleanIng.replacingOccurrences(of: "¼", with: ".25")
         cleanIng = cleanIng.replacingOccurrences(of: "¾", with: ".75")
-        cleanIng = cleanIng.replacingOccurrences(of: ",", with: ".")
+//        cleanIng = cleanIng.replacingOccurrences(of: ",", with: ".")
         
         //split num unit nama
-        let array = cleanIng.components(separatedBy: " ")
+        var array = cleanIng.components(separatedBy: " ")
+        let qty = array[0]
+        array[0] = array[0].replacingOccurrences(of: ",", with: ".")
+        
         
         //cek arr(0) number gak, if yes
         if let _amount = array.ref(0) {
             
-//            units.contains(_unit)
-//            _amount = _amount.replacingOccurrences(of: "½", with: ".5")
-//            _amount = _amount.replacingOccurrences(of: "¼", with: ".25")
-//            _amount = _amount.replacingOccurrences(of: "¾", with: ".75")
-            
             //MARK: BERUBAH DI SINI , UPDATE BAB 4
             //bwt cek arr 0 is num or not
             amount = Double(_amount) ?? 0
-//            amountString = {
-//                if amount.truncatingRemainder(dividingBy: 1) == 0 {
-//                    //int
-//                    return String(Int(amount))
-//                } else {
-//                    //double
-////                    return String(format: "%f", amount)
-//                    return "\(amount)"
-//                }
-//            }()
+//
             if (Double(_amount) != nil) {
+                
                 amountString = {
                     if amount.truncatingRemainder(dividingBy: 1) == 0 {
                         //int
@@ -102,7 +93,7 @@ extension PasteViewIngredient{
                 print(amount)
                 print(amountString)
                     amountUnit += _amount
-                    userAmountUnit += _amount
+                    userAmountUnit += qty
 //                }
                 
               
