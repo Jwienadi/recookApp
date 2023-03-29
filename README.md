@@ -5,3 +5,4 @@ Publication URL: https://doi.org/10.28932/jutisi.v8i3.5140
 </br>
 An iOS app for food recipe collection made for final project as a requirement to graduate and obtain bachelor of computer. Was developed using evolutionary prototyping SDLC, from problem analysis > specifying requirements and features (use case, class diagram, activity diagram) > create prototype > get feedback from mentor and potential users > revise > develop (Code) > alpha and beta test.
 <br>
+Developed using Swift programming language, and iOS frameworks like Core Data for data persistence and SwiftUI for front-end development. This app was developed to be compatible with iPhone and iPad devices.
